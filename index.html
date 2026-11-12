@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Perfil estudiantil con información personal, intereses tecnológicos, metas académicas y contacto."
+    />
+    <title>Perfil de Johan Gómez</title>
+    <style>
+      :root {
+        --bg-1: #f4f7ff;
+        --bg-2: #e8f0ff;
+        --card: #ffffff;
+        --primary: #4f46e5;
+        --primary-dark: #312e81;
+        --secondary: #14b8a6;
+        --accent: #f59e0b;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #e5e7eb;
+        --shadow: 0 18px 40px rgba(79, 70, 229, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+        color: var(--text);
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 20px;
+      }
+
+      .profile-card {
+        background: var(--card);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, var(--primary), #7c3aed 60%, #8b5cf6);
+        padding: 30px 30px 80px;
+        position: relative;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+      }
+
+      .status {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+      }
+
+      .hero {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        margin-top: 18px;
+      }
+
+      .avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 5px solid rgba(255, 255, 255, 0.7);
+        object-fit: cover;
+        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+      }
+
+      .name-wrap h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: white;
+      }
+
+      .name-wrap p {
+        margin: 10px 0 0;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.05rem;
+      }
+
+      .body {
+        padding: 0 30px 30px;
+        margin-top: -52px;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 24px;
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 12px 22px rgba(15, 23, 42, 0.05);
+      }
+
+      .panel h2 {
+        margin: 0 0 18px;
+        font-size: 1.3rem;
+        color: var(--primary-dark);
+      }
+
+      .presentation {
+        line-height: 1.7;
+        color: var(--text);
+        margin: 0;
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 6px;
+      }
+
+      .pill {
+        background: rgba(79, 70, 229, 0.08);
+        color: var(--primary-dark);
+        border: 1px solid rgba(79, 70, 229, 0.12);
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-size: 0.92rem;
+        font-weight: 600;
+      }
+
+      .list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .list li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        color: var(--text);
+      }
+
+      .bullet {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        margin-top: 7px;
+        flex-shrink: 0;
+      }
+
+      .contact {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-top: 18px;
+        padding: 18px 20px;
+        background: linear-gradient(135deg, rgba(20, 184, 166, 0.08), rgba(79, 70, 229, 0.06));
+        border: 1px solid rgba(20, 184, 166, 0.12);
+        border-radius: 16px;
+      }
+
+      .contact strong {
+        display: block;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+      }
+
+      .contact a {
+        color: var(--primary-dark);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .contact .icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary);
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .page {
+          margin: 18px auto;
+          padding: 12px;
+        }
+
+        .header {
+          padding: 24px 20px 72px;
+        }
+
+        .hero {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .avatar {
+          width: 110px;
+          height: 110px;
+        }
+
+        .body {
+          padding: 0 18px 20px;
+          margin-top: -42px;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          padding: 18px;
+        }
+
+        .contact {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="profile-card">
+        <header class="header">
+          <div class="topbar">
+            <span>Perfil Estudiantil</span>
+            <span class="status">Disponible para colaborar</span>
+          </div>
+
+          <div class="hero">
+            <img
+              class="avatar"
+              src="fotojohan.jpeg"
+              alt="Foto de perfil de Johan Gómez"
+            />
+
+            <div class="name-wrap">
+              <h1>Johan Gómez</h1>
+              <p>Estudiante de Tecnología y Desarrollo</p>
+            </div>
+          </div>
+        </header>
+
+        <main class="body">
+          <div class="info-grid">
+            <section class="panel">
+              <h2>Presentación personal</h2>
+              <p class="presentation">
+                Soy un estudiante motivado por la creatividad, el aprendizaje constante
+                y el uso de la tecnología para resolver problemas reales. me encanta
+                explorar nuevas ideas, colaborar en equipo y transformar conceptos en
+                proyectos útiles para la comunidad y para mi crecimiento profesional.
+                Disfruto del trabajo disciplinado, la curiosidad intelectual y la
+                oportunidad de seguir desarrollándome en áreas como la programación,
+                el diseño digital y la innovación aplicada.
+              </p>
+            </section>
+
+            <aside class="panel">
+              <h2>Aspiraciones educativas</h2>
+              <div class="pill-list">
+                <span class="pill">Ingeniería de Software</span>
+                <span class="pill">Desarrollo Web</span>
+                <span class="pill">Especialización en IA</span>
+                <span class="pill">Educación continua</span>
+              </div>
+            </aside>
+          </div>
+
+          <div class="info-grid" style="margin-top: 24px;">
+            <section class="panel">
+              <h2>Intereses tecnológicos</h2>
+              <ul class="list">
+                <li><span class="bullet"></span><span>Programación frontend y backend.</span></li>
+                <li><span class="bullet"></span><span>Diseño de experiencias digitales y prototipos.</span></li>
+                <li><span class="bullet"></span><span>Inteligencia artificial y análisis de datos.</span></li>
+                <li><span class="bullet"></span><span>Automatización y soluciones tecnológicas prácticas.</span></li>
+              </ul>
+            </section>
+
+            <section class="panel">
+              <h2>Áreas de estudio</h2>
+              <ul class="list">
+                <li><span class="bullet"></span><span>Matemáticas aplicadas.</span></li>
+                <li><span class="bullet"></span><span>Programación y lógica computacional.</span></li>
+                <li><span class="bullet"></span><span>Diseño gráfico y comunicación visual.</span></li>
+                <li><span class="bullet"></span><span>Computación y sistemas informáticos.</span></li>
+              </ul>
+            </section>
+          </div>
+
+          <div class="info-grid" style="margin-top: 24px;">
+            <section class="panel">
+              <h2>Otros intereses</h2>
+              <ul class="list">
+                <li><span class="bullet"></span><span>Lectura de libros de tecnología y desarrollo personal.</span></li>
+                <li><span class="bullet"></span><span>Deportes y actividades físicas para mantener equilibrio.</span></li>
+                <li><span class="bullet"></span><span>Explorar nuevas culturas, música y arte.</span></li>
+                <li><span class="bullet"></span><span>Participación en proyectos estudiantiles y voluntariados.</span></li>
+              </ul>
+            </section>
+
+            <section class="panel">
+              <h2>Contacto</h2>
+              <div class="contact">
+                <div class="icon">✉</div>
+                <div>
+                  <strong>Correo institucional</strong>
+                  <a href="mailto:johan.gomez@example.com">johan.gomez@example.com</a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
